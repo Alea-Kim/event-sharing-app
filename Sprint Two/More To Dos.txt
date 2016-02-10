@@ -1,0 +1,7 @@
+TO DO:
+[] App
+	- Code history, inline comments, class comments, etc.
+[] Sprint Review (developers)
+[] Sprint Revview (Ma'am Annette)
+[] Code Review
+[] Sprint Retrospect 
