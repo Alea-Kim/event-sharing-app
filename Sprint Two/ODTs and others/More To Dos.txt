@@ -4,4 +4,4 @@ TO DO:
 [] Sprint Review (developers)
 [] Sprint Revview (Ma'am Annette)
 [] Code Review
-[] Sprint Retrospect 
+[/] Sprint Retrospect 
