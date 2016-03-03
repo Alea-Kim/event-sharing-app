@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
     DEVELOPED BY: BACK UP
     CLIENT: MAAM ANNETTE (ITDC)
     Allows the used to Log in in order to explore the app.
 -->
 
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"

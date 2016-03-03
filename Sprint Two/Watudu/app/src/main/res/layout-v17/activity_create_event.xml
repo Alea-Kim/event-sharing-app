@@ -100,14 +100,18 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <TextClock
+            <TimePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textClock"
-                android:layout_column="0" />
+                android:id="@+id/timePicker"
+                android:layout_column="0"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:layout_margin="0dp"
+                android:timePickerMode="spinner" />
         </TableRow>
 
         <TextView

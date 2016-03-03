@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.blogout:
                // userLocalStore.clearUserData();
                // userLocalStore.setUserLoggedIn(false);
-                startActivity(new Intent(this, Listview.class));
+               // startActivity(new Intent(this, Listview.class));
                 break;
 
             case R.id.tvloginlink:

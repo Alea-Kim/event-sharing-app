@@ -5,7 +5,7 @@
 * CLIENT: MAAM ANNETTE (ITDC)
 * ListView is used to prompt the searched events in a listed manner.
 */
-
+/*
 package com.eventsharing.watudu;
 
 import android.net.Uri;
@@ -36,13 +36,13 @@ public class Listview extends AppCompatActivity implements View.OnClickListener 
             )*/
 
     /*if database pagkukunan gamitin yung cursor adapter*/
-    ArrayAdapter<String> adapter;
+  /*  ArrayAdapter<String> adapter;
     String[] android_versions = {"Hackaton 2016", "CSI Innov School 2016", "#DEFINE 2016", "DevCamp 2016", "Engg Week 2016"};
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
+ /*   private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class Listview extends AppCompatActivity implements View.OnClickListener 
         /*pass the argument (this)
         * simple list item 1 is built in and available in android system
         * last argument is the data source*/
-        listView.setAdapter(adapter);
+    /*    listView.setAdapter(adapter);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -100,3 +100,5 @@ public class Listview extends AppCompatActivity implements View.OnClickListener 
         client.disconnect();
     }
 }
+
+    */
