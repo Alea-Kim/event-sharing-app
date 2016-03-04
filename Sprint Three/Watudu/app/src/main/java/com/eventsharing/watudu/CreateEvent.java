@@ -5,6 +5,8 @@
 * CLIENT: MAAM ANNETTE (ITDC)
 * Creates event for the app.
 */
+
+/*Update for SPRINT 3: Save file to a txt file, then to internal. I import new packages in oder to write and read*/
 package com.eventsharing.watudu;
 
 import android.content.Intent;
@@ -50,7 +52,7 @@ public class CreateEvent extends AppCompatActivity{
 
         //bCreate.setOnClickListener(this);
     }
-
+    /*Write data to text file, then saved to the internal memory. */
     // write text to file
     public void WriteBtn(View v) {
         // add-write text into file
@@ -76,7 +78,7 @@ public class CreateEvent extends AppCompatActivity{
             e.printStackTrace();
         }
     }
-
+    /*READ FILE: Tried to access file frm txt file*/
     // Read text from file
     public void ReadBtn(View v) {
         //reading text from file
