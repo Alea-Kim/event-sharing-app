@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent"
+    android:background="#0066bb"
+    android:weightSum="1">
+
+
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/bsearch"
+        android:text="SEARCH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id = "@+id/tvloginlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG-IN"
+        android:layout_gravity="center_horizontal"
+        android:textStyle ="bold"
+        android:layout_margin="20dp" />
+
+       <TextView
+        android:id = "@+id/tvprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:text="SEE PROFILE UI"
+        android:layout_gravity="center_horizontal"
+        android:textStyle ="bold"
+        android:layout_margin="40dp" />
+
+</LinearLayout>
