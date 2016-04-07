@@ -8,15 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- TOP MOST HEADER BACKGROUND -->
         <ImageView
             android:id="@+id/header_cover_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"/>
-        <!--
-        android:src="@drawable/navigation_header_image" />
--->
-        <!--TOP MOST-->
+            android:scaleType="centerCrop"
+            android:src="@drawable/navigation_header_image" />
+
+        <!--TOP MOST BOX FOR PROFILE ID-->
         <ImageButton
             android:id="@+id/user_profile_photo"
             android:layout_width="120dp"
@@ -26,7 +26,9 @@
             android:layout_marginTop="-60dp"
             android:elevation="5dp"
             android:padding="20dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+
+            android:src="@drawable/navigation_header_image"/>
 
         <RelativeLayout
             android:id="@+id/profile_layout"
