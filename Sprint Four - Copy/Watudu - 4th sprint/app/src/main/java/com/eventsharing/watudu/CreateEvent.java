@@ -60,6 +60,8 @@ public class CreateEvent extends AppCompatActivity{
             FileOutputStream fileout=openFileOutput("mytextfile.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             outputWriter.write(etEventName.getText().toString());
+            outputWriter.write("\n");
+
             outputWriter.write(etEventSubtitle.getText().toString());
             outputWriter.write(etVenue.getText().toString());
             outputWriter.write(etDescription.getText().toString());

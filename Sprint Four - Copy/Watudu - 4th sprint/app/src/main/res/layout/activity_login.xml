@@ -62,7 +62,7 @@
             android:layout_marginBottom="24dp"
             android:padding="12dp"
             android:text="Login"
-            android:background ="#FFFFFF"
+            android:background ="#AAAAAA"
             android:layout_gravity="center_horizontal" />
 
         <!-- SIGN UP LINK TO CLICK -->

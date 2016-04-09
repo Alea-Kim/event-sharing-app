@@ -15,6 +15,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.sql.Date;
 
 public class REGISTER extends AppCompatActivity implements View.OnClickListener{
 
@@ -51,6 +58,23 @@ public class REGISTER extends AppCompatActivity implements View.OnClickListener{
         switch(v.getId()){
     /* will notify the onclick methos*/
             case R.id.bregister:
+                try {
+                    FileOutputStream fileout=openFileOutput("mytextfile.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+                    outputWriter.write(etName.getText().toString());
+                    outputWriter.write("\n");
+
+                    outputWriter.write(etAge.getText().toString());
+                    outputWriter.write(etEmail.getText().toString());
+                    outputWriter.close();
+
+                    //display file saved message
+                    Toast.makeText(getBaseContext(), "Account saved.",
+                            Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 startActivity(new Intent(this, TabLayout.class)); /*HOMEPAGE NA SYA MAPUPUNTA*/
                 break;
