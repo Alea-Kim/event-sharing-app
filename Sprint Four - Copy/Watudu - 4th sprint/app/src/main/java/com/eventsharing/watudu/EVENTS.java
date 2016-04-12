@@ -12,6 +12,7 @@ import android.widget.TextView;
  */
 
 public class EVENTS extends AppCompatActivity implements View.OnClickListener{
+    Button bclickableevent;
     TextView tvdesc1, tvdesc2, tvdesc3, tvdesc4;
 
     @Override
@@ -32,7 +33,7 @@ public class EVENTS extends AppCompatActivity implements View.OnClickListener{
     @Override
 /* if button clicked this will take place*/
 
-/*this switch   gets the ID of the view which notified the
+/*this switch gets the ID of the view which notified the
 * onClick button and then the cases will redirects where it will be going. *
 *
 * StartActivity means that this is the next tab that will be displayed
