@@ -1,25 +1,71 @@
 package com.eventsharing.watudu;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.PopupWindow;
+import android.view.LayoutInflater;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * Created by ML on 3/18/2016.
  */
 
-public class EVENTS extends AppCompatActivity implements View.OnClickListener{
+public class EVENTS extends Activity implements View.OnClickListener{
+
+    String[] DayOfWeek = {"Sunday", "Monday", "Tuesday",
+            "Wednesday", "Thursday", "Friday", "Saturday"};
+
     Button bclickableevent;
     TextView tvdesc1, tvdesc2, tvdesc3, tvdesc4;
 
+    /** Called when the activity is first created. */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events);
-        tvdesc1 = (TextView) findViewById(R.id.tvdesc1);
+
+        final Button btnOpenPopup = (Button) findViewById(R.id.openpopup);
+        btnOpenPopup.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                LayoutInflater layoutInflater =
+                        (LayoutInflater)getBaseContext()
+                                .getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = layoutInflater.inflate(R.layout.popup, null);
+                final PopupWindow popupWindow = new PopupWindow(
+                        popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+                Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
+
+                Spinner popupSpinner = (Spinner)popupView.findViewById(R.id.popupspinner);
+
+                ArrayAdapter<String> adapter =
+                        new ArrayAdapter<String>(EVENTS.this,
+                                android.R.layout.simple_spinner_item, DayOfWeek);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                popupSpinner.setAdapter(adapter);
+
+                btnDismiss.setOnClickListener(new Button.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }});
+
+                popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
+            }
+
+        });
+
+    tvdesc1 = (TextView) findViewById(R.id.tvdesc1);
         tvdesc2 = (TextView) findViewById(R.id.tvdesc2);
         tvdesc3 = (TextView) findViewById(R.id.tvdesc3);
         tvdesc4 = (TextView) findViewById(R.id.tvdesc4);

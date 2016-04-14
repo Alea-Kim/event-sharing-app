@@ -6,12 +6,26 @@ package com.eventsharing.watudu;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 public class TabLayout extends TabActivity {
+/*
+    private void CreateTab(Type activityType, string tag, string label, int drawableId )
+    {
+        var intent = new Intent(this, activityType);
+        intent.AddFlags(ActivityFlags.NewTask);
 
+        var spec = TabHost.NewTabSpec(tag);
+        var drawableIcon = Resources.GetDrawable(drawableId);
+        spec.SetIndicator(label, drawableIcon);
+        spec.SetContent(intent);
+
+        TabHost.AddTab(spec);
+    }
+*/
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
