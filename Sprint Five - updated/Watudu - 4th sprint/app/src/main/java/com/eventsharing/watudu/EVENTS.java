@@ -13,9 +13,9 @@ public class EVENTS extends Activity {
     GridView gv;
     Context context;
     ArrayList prgmName;
-    public static String[] prgmNameList = {"Accelerate", "Media Revolution", "Space Race", "Space Bar", "Assemble Lane", "Stat-en-ekek", "Hiyaw", "UP Entrep Fair", "Accelerate"};
+    public static String[] prgmNameList = {"Subscribe to ACM", "Subscribe to Broad", "Subscribe to CS", "Subscribe to CS", "Subscribe to Rep", "Subscribe to Stat", "Subscribe to Tomo-Kai", "Subscribe to CE"};
     //STATIC PICTURES TO
-    public static int[] prgmImages = {R.drawable.images, R.drawable.images1, R.drawable.images2, R.drawable.images3, R.drawable.images4, R.drawable.images5, R.drawable.images6, R.drawable.images7, R.drawable.images8};
+    public static int[] prgmImages = {R.drawable.images, R.drawable.images1, R.drawable.images2, R.drawable.images3, R.drawable.images4, R.drawable.images5, R.drawable.images6, R.drawable.images7};
     public static String[] prgmDesc = {"Be prepared as embark your journey into the Tech Industry. \n" +
             "\n" +
             "In partnership with UP Circuit and Accenture in the Philippines, we present you ACCELERATE. A talk by Accenture on the Critical Skills needed in the Tech Industry.\n" +
@@ -113,7 +113,7 @@ public class EVENTS extends Activity {
             "Supported by:\n" +
             "Enterprise-DOST | University Freshie Council | Fratello | Pinas Media\n" +
             "\n" +
-            "[This event is part of the UP Circle of Entrepreneurs Week.]", "Accelerate"};
+            "[This event is part of the UP Circle of Entrepreneurs Week.]"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -57,8 +57,8 @@ public class TabLayout extends TabActivity {
         // Tab for Others
         TabSpec otherspec = tabHost.newTabSpec("Others");
         // setting Title and Icon for the Tab
-        otherspec.setIndicator("Others", getResources().getDrawable(R.drawable.logo));
-        Intent otherIntent = new Intent(this, MainLogged.class);
+        otherspec.setIndicator("LOG OUT", getResources().getDrawable(R.drawable.logo));
+        Intent otherIntent = new Intent(this, MainActivity.class);
         otherspec.setContent(otherIntent);
 
 

@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/bsignup"
         android:text="SIGN UP"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/homebutton"
         android:layout_gravity="right"
@@ -55,7 +55,7 @@
     <Button
         android:id="@+id/bsignin"
         android:text="SIGN IN"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/homebutton"
         android:layout_alignParentBottom="true"
