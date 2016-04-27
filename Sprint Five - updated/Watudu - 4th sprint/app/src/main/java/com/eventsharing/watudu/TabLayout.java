@@ -47,7 +47,7 @@ public class TabLayout extends TabActivity {
         Intent myeventIntent = new Intent(this, EVENTS.class);
         myeventspec.setContent(myeventIntent);
 
-        // Tab for Creat Events
+        // Tab for Creatw Events
         TabSpec createeventspec = tabHost.newTabSpec("Create Event");
         // setting Title and Icon for the Tab
         createeventspec.setIndicator("Create Events", getResources().getDrawable(R.drawable.logo));

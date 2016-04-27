@@ -57,17 +57,15 @@ public class CreateEvent extends AppCompatActivity{
     public void WriteBtn(View v) {
         // add-write text into file
         try {
-            FileOutputStream fileout=openFileOutput("mytextfile.txt", MODE_PRIVATE);
+            FileOutputStream fileout=openFileOutput("event.txt", MODE_PRIVATE);
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             outputWriter.write(etEventName.getText().toString());
             outputWriter.write("\n");
-
-            outputWriter.write(etEventSubtitle.getText().toString());
-            outputWriter.write(etVenue.getText().toString());
+          //  outputWriter.write(etVenue.getText().toString());
             outputWriter.write(etDescription.getText().toString());
-            outputWriter.write(etEntranceFee.getText().toString());
-            etDate = new Date(datePicker.getCalendarView().getDate());
-            outputWriter.write(etDate.toString());
+           // outputWriter.write(etEntranceFee.getText().toString());
+           // etDate = new Date(datePicker.getCalendarView().getDate());
+            //outputWriter.write(etDate.toString());
             //outputWriter.write(datePicker.getText().toString());
             //outputWriter.write(timePicker.getText().toString());
             outputWriter.close();

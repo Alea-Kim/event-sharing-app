@@ -12,6 +12,11 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.sql.Date;
 
 /**
  * Created by ML on 3/18/2016.
@@ -19,8 +24,7 @@ import android.widget.Spinner;
 
 public class EVENTS extends Activity implements View.OnClickListener{
 
-    String[] DayOfWeek = {"EDIT", "DELETE", "Tuesday",
-            "Wednesday", "Thursday", "Friday", "Saturday"};
+    String[] DayOfWeek = {"EDIT", "DELETE"};
 
     Button bclickableevent;
     TextView tvdesc1, tvdesc2, tvdesc3, tvdesc4;
@@ -30,6 +34,7 @@ public class EVENTS extends Activity implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events);
+
 
         final Button btnOpenPopup = (Button) findViewById(R.id.openpopup);
         btnOpenPopup.setOnClickListener(new Button.OnClickListener() {
@@ -89,8 +94,19 @@ public class EVENTS extends Activity implements View.OnClickListener{
         switch(v.getId()){
         /* will notify the onclick methos*/
             case R.id.tvdesc1:
-                // userLocalStore.clearUserData();
-                // userLocalStore.setUserLoggedIn(false);
+                try {
+                    FileOutputStream fileout=openFileOutput("index.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+                    outputWriter.write("1");
+                    outputWriter.close();
+
+                    //display file saved message
+                   // Toast.makeText(getBaseContext(), "Index saved.",
+                     //       Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 startActivity(new Intent(this, EVENTDESC.class));
                 break;
 
@@ -112,6 +128,21 @@ public class EVENTS extends Activity implements View.OnClickListener{
                 startActivity(new Intent(this, EVENTDESC.class));
                 break;
         }
+       /* try {
+            FileOutputStream fileout=openFileOutput("mytextfile.txt", MODE_PRIVATE);
+            OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+            outputWriter.write(index.toString());
+            outputWriter.write("\n");
+            outputWriter.close();
+
+            //display file saved message
+            Toast.makeText(getBaseContext(), "File saved successfully!",
+                    Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        */
     }
 
 
