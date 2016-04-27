@@ -26,7 +26,7 @@ public class EVENTDESC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.material_design);
 
-        //read the m\\ith event to open!
+        //read the ith event to open!
         String s = "";
         int charRead, i, ctr;
         String[] title = new String[10];

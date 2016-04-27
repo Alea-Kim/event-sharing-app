@@ -16,12 +16,14 @@ import android.widget.Toast;
 public class CustomAdapter extends BaseAdapter{
 
     String [] result;
+    String [] desc;
     Context context;
     int [] imageId;
     private static LayoutInflater inflater=null;
-    public CustomAdapter(EVENTS events, String[] prgmNameList, int[] prgmImages) {
+    public CustomAdapter(EVENTS events, String[] prgmNameList, int[] prgmImages, String[] prgmDesc) {
         // TODO Auto-generated constructor stub
         result=prgmNameList;
+        desc = prgmDesc;
         context=events;
         imageId=prgmImages;
         inflater = ( LayoutInflater )context.
@@ -70,7 +72,7 @@ public class CustomAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Details \n: "+desc[position], Toast.LENGTH_LONG).show();
             }
         });
 
