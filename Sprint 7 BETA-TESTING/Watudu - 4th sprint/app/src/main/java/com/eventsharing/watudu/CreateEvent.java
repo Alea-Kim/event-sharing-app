@@ -124,7 +124,6 @@ public class CreateEvent extends AppCompatActivity  implements View.OnClickListe
 
     }
 
-    /* PLAYING WITH IMAGES
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
@@ -174,7 +173,6 @@ public class CreateEvent extends AppCompatActivity  implements View.OnClickListe
         // this is our fallback here
         return uri.getPath();
     }
-    */
 
 
     public void ReadBtn(View v) {
