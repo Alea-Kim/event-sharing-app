@@ -103,39 +103,76 @@ public class CreateEvent extends AppCompatActivity  implements View.OnClickListe
 
 
     public void onClick(View v) {
+        int error = 0;
         switch(v.getId()){
     /* will notify the onclick method*/
             case R.id.bCreate:
                 try {
+                    if( imageView.getDrawable() == null ){
+                        Toast.makeText(getBaseContext(), "Please add a photo.",
+                                Toast.LENGTH_SHORT).show();
+                        error = 1;
+                    }
+                    if( etEventName.getText().toString().trim().equals("")){
+                        error = 1;
+                        etEventName.setError( "Event Name is required!" );
+                        Toast.makeText(getBaseContext(), "Please write on every field.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    if( etDescription.getText().toString().trim().equals("")) {
+                        etDescription.setError("Description is required!");
+                        Toast.makeText(getBaseContext(), "Please write on every field.",
+                                Toast.LENGTH_SHORT).show();
+                        error = 1;
+                    }
+                    if( etVenue.getText().toString().trim().equals("")) {
+                        etVenue.setError("Venue or Place is required!");
+                        Toast.makeText(getBaseContext(), "Please write on every field.",
+                                Toast.LENGTH_SHORT).show();
+                        error = 1;
+                    }
+                    if( etTime.getText().toString().trim().equals("")) {
+                        etTime.setError("Time is required!");
+                        Toast.makeText(getBaseContext(), "Please write on every field.",
+                                Toast.LENGTH_SHORT).show();
+                        error = 1;
+                    }
+                    if( etEntranceFee.getText().toString().trim().equals("")) {
+                        error = 1;
+                        etEntranceFee.setError("Entrance Fee is required!");
+                        Toast.makeText(getBaseContext(), "Please write on every field.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    else if (error == 0){
 
-                    FileOutputStream fileout=openFileOutput("event.txt", MODE_APPEND);
-                    OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
-                    outputWriter.write("{");
-                    outputWriter.write(etEventName.getText().toString());
-                    outputWriter.write("}");
-                    outputWriter.write("Details: ");
-                    outputWriter.write(etDescription.getText().toString());
-                    outputWriter.write("\nVenue: ");
-                    outputWriter.write(etVenue.getText().toString());
-                    outputWriter.write("\nDate/Time: ");
-                    etDate = new Date(datePicker.getCalendarView().getDate());
-                    outputWriter.write(etDate.toString());
-                    outputWriter.write(", ");
-                    outputWriter.write(etTime.getText().toString());
-                    outputWriter.write("\nEntrance Fee: ");
-                    outputWriter.write(etEntranceFee.getText().toString());
-                    outputWriter.write("`");
-                    outputWriter.close();
+                        FileOutputStream fileout=openFileOutput("event.txt", MODE_APPEND);
+                        OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+                        outputWriter.write("{");
+                        outputWriter.write(etEventName.getText().toString());
+                        outputWriter.write("}");
+                        outputWriter.write("Details: ");
+                        outputWriter.write(etDescription.getText().toString());
+                        outputWriter.write("\nVenue: ");
+                        outputWriter.write(etVenue.getText().toString());
+                        outputWriter.write("\nDate/Time: ");
+                        etDate = new Date(datePicker.getCalendarView().getDate());
+                        outputWriter.write(etDate.toString());
+                        outputWriter.write(", ");
+                        outputWriter.write(etTime.getText().toString());
+                        outputWriter.write("\nEntrance Fee: ");
+                        outputWriter.write(etEntranceFee.getText().toString());
+                        outputWriter.write("`");
+                        outputWriter.close();
+                        Toast.makeText(getBaseContext(), "File saved successfully!",
+                                Toast.LENGTH_SHORT).show();
 
-                    //display file saved message
-                    Toast.makeText(getBaseContext(), "File saved successfully!",
-                            Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(this, TabLayout.class);
+                        startActivity(i);
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                startActivity(new Intent(this, TabLayout.class));
                 break;
         }
     }

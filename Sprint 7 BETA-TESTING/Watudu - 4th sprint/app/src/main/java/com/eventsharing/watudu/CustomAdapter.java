@@ -76,6 +76,7 @@ public class CustomAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+
                 Toast.makeText(context, desc[position], Toast.LENGTH_LONG).show();
             }
         });

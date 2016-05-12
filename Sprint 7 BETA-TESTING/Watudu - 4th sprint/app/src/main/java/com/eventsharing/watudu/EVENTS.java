@@ -37,6 +37,7 @@ public class EVENTS extends Activity {
         List<String> where = new ArrayList<String>();
         List<String> where2 = new ArrayList<String>();
         List<String> where3 = new ArrayList<String>();
+
         try {
             FileInputStream fileIn=openFileInput("event.txt");
             InputStreamReader InputRead= new InputStreamReader(fileIn);
@@ -100,15 +101,15 @@ public class EVENTS extends Activity {
 
             prgmImages = new String[where3.size()];
             where3.toArray(prgmImages);
-
             InputRead.close();
-            Toast.makeText(getBaseContext(), "yatta!", Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.events);
         gv = (GridView) findViewById(R.id.gridView1);
         gv.setAdapter(new CustomAdapter(this, prgmNameList, prgmImages, prgmDesc));
