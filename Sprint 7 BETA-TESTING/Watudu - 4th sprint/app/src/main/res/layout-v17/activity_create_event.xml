@@ -50,23 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"/>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Subtitle (Optional)" />
-
-        </TableRow>
-
-        <EditText
-            android:id="@+id/etEventSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,31 +79,17 @@
                 android:datePickerMode="spinner" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time" />
-
-        </TableRow>
-
-        <TableRow
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Time" />
 
-            <TimePicker
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/timePicker"
-                android:layout_column="0"
-                android:clickable="true"
-                android:contextClickable="true"
-                android:layout_margin="0dp"
-                android:timePickerMode="spinner" />
-        </TableRow>
+        <EditText
+            android:id="@+id/etTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -155,6 +124,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"/>
 
+
+        <Button
+            android:id="@+id/bImage"
+            android:onClick="uploadImage"
+            android:text="Add Image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
 
         <Button
             android:id="@+id/bCreate"

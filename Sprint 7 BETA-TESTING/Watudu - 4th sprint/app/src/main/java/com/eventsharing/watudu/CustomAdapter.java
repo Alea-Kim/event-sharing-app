@@ -66,13 +66,13 @@ public class CustomAdapter extends BaseAdapter{
 
         holder.tv.setText(result[position]);
         holder.img.setImageResource(imageId[position]);
-
+        
         rowView.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Toast.makeText(context, "Details \n: "+desc[position], Toast.LENGTH_LONG).show();
+                Toast.makeText(context, desc[position], Toast.LENGTH_LONG).show();
             }
         });
 

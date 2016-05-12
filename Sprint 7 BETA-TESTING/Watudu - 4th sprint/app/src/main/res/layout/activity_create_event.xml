@@ -51,12 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"/>
 
-        <EditText
-            android:id="@+id/etEventSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,27 +80,17 @@
                 android:datePickerMode="spinner" />
         </TableRow>
 
-        <TableRow
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time" />
+
+        <EditText
+            android:id="@+id/etTime"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextClock
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textClock"
-                android:layout_column="0" />
-        </TableRow>
 
         <TextView
             android:layout_width="wrap_content"

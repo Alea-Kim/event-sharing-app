@@ -10,6 +10,12 @@
 package com.eventsharing.watudu;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,22 +26,29 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.TextView;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.sql.Date;
 
 
-public class CreateEvent extends AppCompatActivity{
+public class CreateEvent extends AppCompatActivity  implements View.OnClickListener{
 
     Button bCreate;
-    EditText etEventName, etEventSubtitle, etVenue, etDescription, etEntranceFee;
+    EditText etEventName, etVenue, etDescription, etEntranceFee, etTime;
     DatePicker datePicker;
-    TimePicker timePicker;
+    //TimePicker timePicker;
     Date etDate;
     EditText textmsg;
     static final int READ_BLOCK_SIZE = 100;
+    private String selectedImagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,47 +56,131 @@ public class CreateEvent extends AppCompatActivity{
         setContentView(R.layout.activity_create_event);
 
         etEventName = (EditText) findViewById(R.id.etEventName);
-        etEventSubtitle = (EditText) findViewById(R.id.etEventSubtitle);
         etVenue = (EditText) findViewById(R.id.etVenue);
         etDescription = (EditText) findViewById(R.id.etDescription);
         etEntranceFee = (EditText) findViewById(R.id.etEntranceFee);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
-        timePicker = (TimePicker) findViewById(R.id.timePicker);
+        etTime = (EditText) findViewById(R.id.etTime);
+        bCreate = (Button) findViewById(R.id.bCreate);
+
+        bCreate.setOnClickListener(this);
 
         //bCreate.setOnClickListener(this);
     }
-    /*Write data to text file, then saved to the internal memory. */
-    // write text to file
-    public void WriteBtn(View v) {
-        // add-write text into file
-        try {
-            FileOutputStream fileout=openFileOutput("event.txt", MODE_PRIVATE);
-            OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
-            outputWriter.write(etEventName.getText().toString());
-            outputWriter.write("\n");
-          //  outputWriter.write(etVenue.getText().toString());
-            outputWriter.write(etDescription.getText().toString());
-           // outputWriter.write(etEntranceFee.getText().toString());
-           // etDate = new Date(datePicker.getCalendarView().getDate());
-            //outputWriter.write(etDate.toString());
-            //outputWriter.write(datePicker.getText().toString());
-            //outputWriter.write(timePicker.getText().toString());
-            outputWriter.close();
 
-            //display file saved message
-            Toast.makeText(getBaseContext(), "File saved successfully!",
-                    Toast.LENGTH_SHORT).show();
+    public void onClick(View v) {
+        switch(v.getId()){
+    /* will notify the onclick method*/
+            case R.id.bCreate:
+                try {
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                    FileOutputStream fileout=openFileOutput("event.txt", MODE_APPEND);
+                    OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+                    outputWriter.write("{");
+                    outputWriter.write(etEventName.getText().toString());
+                    outputWriter.write("}");
+                    outputWriter.write("Details: ");
+                    outputWriter.write(etDescription.getText().toString());
+                    outputWriter.write("\nVenue: ");
+                    outputWriter.write(etVenue.getText().toString());
+                    outputWriter.write("\nDate/Time: ");
+                    etDate = new Date(datePicker.getCalendarView().getDate());
+                    outputWriter.write(etDate.toString());
+                    outputWriter.write(", ");
+                    outputWriter.write(etTime.getText().toString());
+                    outputWriter.write("\nEntrance Fee: ");
+                    outputWriter.write(etEntranceFee.getText().toString());
+                    outputWriter.write("`");
+
+
+                    //outputWriter.write(datePicker.getText().toString());
+                    //outputWriterwrite(timePicker.getText().toString());
+                    outputWriter.close();
+
+                    //display file saved message
+                    Toast.makeText(getBaseContext(), "File saved successfully!",
+                            Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                startActivity(new Intent(this, TabLayout.class));
+                break;
         }
     }
-    /*READ FILE: Tried to access file frm txt file*/
-    // Read text from file
+
+    public void uploadImage(View v){
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        String pictureDirectoryPath = pictureDirectory.getPath();
+
+        //get URI representation
+        Uri data = Uri.parse(pictureDirectoryPath);
+
+        photoPickerIntent.setDataAndType(data, "image/*");
+
+        startActivityForResult(photoPickerIntent, 20);
+
+    }
+
+    /* PLAYING WITH IMAGES
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 20) {
+                Uri selectedImageUri = data.getData();
+                selectedImagePath = getPath(selectedImageUri);
+
+                try {
+
+                    FileOutputStream fileout=openFileOutput("posterpath.txt", MODE_APPEND);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(selectedImagePath);
+                    outputWriter.close();
+
+                    //display file saved message
+                    Toast.makeText(getBaseContext(), "Image added",
+                            Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }
+    }
+
+    /**
+     * helper to retrieve the path of an image URI
+     */
+    public String getPath(Uri uri) {
+        // just some safety built in
+        if( uri == null ) {
+            // TODO perform some logging or show user feedback
+            return null;
+        }
+        // try to retrieve the image from the media store first
+        // this will only work for images selected from gallery
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        if( cursor != null ){
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        // this is our fallback here
+        return uri.getPath();
+    }
+    */
+
+
     public void ReadBtn(View v) {
         //reading text from file
         try {
-            FileInputStream fileIn=openFileInput("mytextfile.txt");
+            FileInputStream fileIn=openFileInput("event.txt");
             InputStreamReader InputRead= new InputStreamReader(fileIn);
 
             char[] inputBuffer= new char[READ_BLOCK_SIZE];
