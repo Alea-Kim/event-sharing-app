@@ -30,6 +30,7 @@
         android:textSize="20dp"
         android:textColor="#0066bb" />
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,6 +40,21 @@
         android:layout_height="match_parent"
         android:stretchColumns="1"
         >
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/bImage"
+            android:onClick="uploadImage"
+            android:text="Add Image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,14 +140,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"/>
 
-
-        <Button
-            android:id="@+id/bImage"
-            android:onClick="uploadImage"
-            android:text="Add Image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
 
         <Button
             android:id="@+id/bCreate"

@@ -4,6 +4,7 @@ package com.eventsharing.watudu;
  * Created by mikalenon on 4/27/2016.
  */
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,14 +19,14 @@ public class CustomAdapter extends BaseAdapter{
     String [] result;
     String [] desc;
     Context context;
-    int [] imageId;
+    String [] imageId;
     private static LayoutInflater inflater=null;
-    public CustomAdapter(EVENTS events, String[] prgmNameList, int[] prgmImages, String[] prgmDesc) {
+    public CustomAdapter(EVENTS events, String[] prgmNameList, String[] prgmImages, String[] prgmDesc) {
         // TODO Auto-generated constructor stub
         result=prgmNameList;
         desc = prgmDesc;
-        context=events;
-        imageId=prgmImages;
+        context = events;
+        imageId = prgmImages;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -65,7 +66,10 @@ public class CustomAdapter extends BaseAdapter{
         holder.img=(ImageView) rowView.findViewById(R.id.imageView1);
 
         holder.tv.setText(result[position]);
-        holder.img.setImageResource(imageId[position]);
+
+        Uri uri;
+        uri= Uri.parse(imageId[position]);
+        holder.img.setImageURI(uri);
         
         rowView.setOnClickListener(new OnClickListener() {
 
