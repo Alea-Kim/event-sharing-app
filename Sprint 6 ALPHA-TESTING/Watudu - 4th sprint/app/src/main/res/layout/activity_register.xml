@@ -15,7 +15,8 @@
     android:paddingTop="56dp"
     android:paddingLeft="24dp"
     android:paddingRight="24dp"
-    android:background="#0066bb">
+    android:background="#0066bb"
+    android:onClick="registerClicked">
 
     <ImageView android:src="@drawable/logo"
         android:layout_width="wrap_content"

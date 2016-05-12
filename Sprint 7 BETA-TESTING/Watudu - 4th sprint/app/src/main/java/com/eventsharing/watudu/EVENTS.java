@@ -70,7 +70,7 @@ public class EVENTS extends Activity {
             where2.toArray(prgmDesc);
 
             InputRead.close();
-            Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

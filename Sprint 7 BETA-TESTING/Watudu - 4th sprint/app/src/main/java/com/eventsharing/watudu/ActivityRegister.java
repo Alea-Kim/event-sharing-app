@@ -15,13 +15,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
-
 public class ActivityRegister extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
-    private static final int REQUEST_REG = 0;
+    // private static final int REQUEST_SIGNUP = 0;
 
     @Bind(R.id.etName)
     EditText _nameText;
@@ -51,6 +53,7 @@ public class ActivityRegister extends AppCompatActivity {
                 register();
             }
         });
+
     }
 
     public void register() {
@@ -58,12 +61,7 @@ public class ActivityRegister extends AppCompatActivity {
 
         if (!validate()) {
             onRegisterFailed();
-            onRegisterFailed();
             return;
-        }
-
-        else {
-            startActivity(new Intent(this, TabLayout.class));
         }
 
         _registerButton.setEnabled(false);
@@ -79,21 +77,21 @@ public class ActivityRegister extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
+
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
+                        // On complete call either onRegisterSuccess or onRegisterFailed
                         onRegisterSuccess();
-                        // onLoginFailed();
+                        // onRegisterFailed();
                         progressDialog.dismiss();
                     }
                 }, 3000);
     }
-
-
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_REG) {
+        if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
                 // TODO: Implement successful signup logic here
@@ -102,19 +100,12 @@ public class ActivityRegister extends AppCompatActivity {
             }
         }
     }
-
-
-    @Override
-    public void onBackPressed() {
-        // Disable going back to the MainActivity
-        moveTaskToBack(true);
-    }
+*/
 
     public void onRegisterSuccess() {
         _registerButton.setEnabled(true);
-        Toast.makeText(getBaseContext(), "Register success", Toast.LENGTH_LONG).show();
-
-        finish();
+        Intent i = new Intent(this, TabLayout.class);
+        startActivity(i);
     }
 
     public void onRegisterFailed() {
@@ -153,4 +144,28 @@ public class ActivityRegister extends AppCompatActivity {
 
         return valid;
     }
+
+    public void registerClicked(View v){
+        // add-write text into file
+        if(validate()) {
+            try {
+                FileOutputStream fileout = openFileOutput("accounts.txt", MODE_APPEND);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+
+                outputWriter.write("{");
+                outputWriter.write(_emailText.getText().toString());
+                outputWriter.write("\n");
+                outputWriter.write(_passwordText.getText().toString());
+                outputWriter.close();
+
+                //display file saved message
+                Toast.makeText(getBaseContext(), "File saved successfully!",
+                        Toast.LENGTH_SHORT).show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

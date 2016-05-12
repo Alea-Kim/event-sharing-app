@@ -67,6 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public void onBackPressed() {
+        // Disable going back to the MainActivity
+        moveTaskToBack(true);
+    }
+
+    @Override
     /* if button clicked this will take place*/
 
     /*this switch gets the ID of the view which notified the
@@ -74,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     *
     * StartActivity means that this is the next tab that will be displayed
     * after clicking the button.*/
+
 
     public void onClick(View v) {
         switch(v.getId()){
@@ -89,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.bsignup:
-                startActivity(new Intent(this, REGISTER.class));
+                startActivity(new Intent(this, ActivityRegister.class));
                 break;
 
           //  case R.id.imageButton:

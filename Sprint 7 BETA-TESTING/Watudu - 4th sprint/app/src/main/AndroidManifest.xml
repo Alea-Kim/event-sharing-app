@@ -28,6 +28,7 @@
 
         <activity android:name=".REGISTER" android:theme="@style/AppTheme.Dark" />
         <activity android:name=".CreateEvent" android:theme="@style/AppTheme.Dark" />
+        <activity android:name=".Others" android:theme="@style/AppTheme.Dark" />
         <activity android:name=".Menu" android:theme="@style/AppTheme.Dark"/>
         <activity android:name=".TAB" android:theme="@style/AppTheme.Dark"/>
         <activity android:name=".EVENTDESC" android:theme="@style/AppTheme.Dark"/>

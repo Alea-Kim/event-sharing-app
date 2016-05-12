@@ -34,7 +34,7 @@ import java.util.List;
 
 public class Others extends AppCompatActivity implements View.OnClickListener{
 
-    Button blogout;
+    Button blogout2;
 
 
 
@@ -44,9 +44,9 @@ public class Others extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.others);
 
-        blogout = (Button) findViewById(R.id.blogout);
+        blogout2 = (Button) findViewById(R.id.blogout2);
 
-        blogout.setOnClickListener(this);
+        blogout2.setOnClickListener(this);
 
     }
 
@@ -62,14 +62,9 @@ public class Others extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
     /* will notify the onclick method*/
-            case R.id.blogout:
+            case R.id.blogout2:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-
-
-            //  case R.id.tvprofile:
-            //    startActivity(new Intent(this, Profile.class));
-            //   break;
         }
     }
 }

@@ -101,12 +101,6 @@ public class ActivityLogin extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        // Disable going back to the MainActivity
-        moveTaskToBack(true);
-    }
-
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
         Toast.makeText(getBaseContext(), "Login success", Toast.LENGTH_LONG).show();

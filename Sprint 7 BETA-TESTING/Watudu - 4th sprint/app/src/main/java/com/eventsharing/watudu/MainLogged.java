@@ -66,11 +66,6 @@ public class MainLogged extends AppCompatActivity implements View.OnClickListene
             case R.id.bsearch:
                 startActivity(new Intent(this, EVENTS.class));
                 break;
-
-
-          //  case R.id.tvprofile:
-            //    startActivity(new Intent(this, Profile.class));
-             //   break;
         }
     }
 }

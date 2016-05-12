@@ -42,7 +42,7 @@
             android:textColor = "#333333"/>
 -->
         <Button
-            android:id="@+id/blogout"
+            android:id="@+id/blogout2"
             android:text="LOG-OUT"
             android:layout_width="150dp"
             android:layout_height="match_parent"
