@@ -67,7 +67,8 @@
             android:layout_below="@+id/etpassword"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="41dp"
-            android:textColor="@color/whitebg"/>
+            android:textColor="@color/whitebg"
+            android:onClick="loginClicked" />
 
         <!-- SIGN UP LINK TO CLICK -->
         <TextView android:id="@+id/tvregisterlink"

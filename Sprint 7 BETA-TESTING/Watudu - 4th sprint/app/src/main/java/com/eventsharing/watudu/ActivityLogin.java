@@ -12,12 +12,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
 public class ActivityLogin extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+
+    String[] email = new String[1];
+    String[] pass = new String[1];
+
+    List<String> where = new ArrayList<String>();
+    List<String> where2 = new ArrayList<String>();
 
     @Bind(R.id.etEmail)
     EditText _emailText;
@@ -29,6 +42,45 @@ public class ActivityLogin extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        //GET FROM FILE
+        try {
+            FileInputStream fileIn=openFileInput("accounts.txt");
+            InputStreamReader InputRead= new InputStreamReader(fileIn);
+
+            char[] inputBuffer= new char[1];
+            String s="";
+            int charRead;
+            while ((charRead = InputRead.read(inputBuffer)) > 0) {
+                // char to string conversion
+                String readstring = String.copyValueOf(inputBuffer, 0, charRead);
+                if(readstring.equals("{")){
+                    s = "";
+                }
+                else if(readstring.equals("\n")){
+                    where.add(s);
+                    s = "";
+                }
+                else if(readstring.equals("}")){
+                    where2.add(s);
+                    s = "";
+                }
+                else{
+                    s += readstring;
+                }
+            }
+            email = new String[where.size()];
+            where.toArray(email);
+
+            pass = new String[where2.size()];
+            where2.toArray(pass);
+
+            InputRead.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //END OF FILE
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
@@ -46,7 +98,7 @@ public class ActivityLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(),REGISTER.class);
+                Intent intent = new Intent(getApplicationContext(), REGISTER.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
@@ -58,10 +110,6 @@ public class ActivityLogin extends AppCompatActivity {
         if (!validate()) {
             onLoginFailed();
             return;
-        }
-
-        else {
-            startActivity(new Intent(this, TabLayout.class));
         }
 
         _loginButton.setEnabled(false);
@@ -85,7 +133,7 @@ public class ActivityLogin extends AppCompatActivity {
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 1000);
     }
 
 
@@ -103,9 +151,10 @@ public class ActivityLogin extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        Toast.makeText(getBaseContext(), "Login success", Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this, TabLayout.class);
+        startActivity(i);
 
-        finish();
+        //finish();
     }
 
     public void onLoginFailed() {
@@ -136,4 +185,5 @@ public class ActivityLogin extends AppCompatActivity {
 
         return valid;
     }
+
 }

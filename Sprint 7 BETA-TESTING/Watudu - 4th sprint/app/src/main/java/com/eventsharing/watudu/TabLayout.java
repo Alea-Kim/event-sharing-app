@@ -30,7 +30,7 @@ public class TabLayout extends TabActivity {
         // Tab for My Events
         TabSpec myeventspec = tabHost.newTabSpec("My Events");
         // setting Title and Icon for the Tab
-        myeventspec.setIndicator("My Events", getResources().getDrawable(R.drawable.logo));
+        myeventspec.setIndicator("Events", getResources().getDrawable(R.drawable.logo));
         Intent myeventIntent = new Intent(this, EVENTS.class);
         myeventspec.setContent(myeventIntent);
 
@@ -44,7 +44,7 @@ public class TabLayout extends TabActivity {
         // Tab for Others
         TabSpec otherspec = tabHost.newTabSpec("Others");
         // setting Title and Icon for the Tab
-        otherspec.setIndicator("LOG OUT", getResources().getDrawable(R.drawable.logo));
+        otherspec.setIndicator("...", getResources().getDrawable(R.drawable.logo));
         Intent otherIntent = new Intent(this, Others.class);
         otherspec.setContent(otherIntent);
 

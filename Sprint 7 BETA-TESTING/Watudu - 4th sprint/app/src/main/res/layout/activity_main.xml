@@ -21,10 +21,10 @@
             android:id="@+id/imageView" />
 
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/etSpace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="127dp"
+            android:layout_marginTop="80dp"
             android:layout_below="@+id/imageView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/round_button"
             android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/etName"
+            android:layout_below="@+id/etSpace"
             android:layout_centerHorizontal="true" />
 
     <Button
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/homebutton"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/etName"
-        android:layout_alignEnd="@+id/etName"
+        android:layout_alignRight="@+id/etSpace"
+        android:layout_alignEnd="@+id/etSpace"
         android:layout_marginBottom="40dp"
         android:textColor="@color/whitebg"/>
 

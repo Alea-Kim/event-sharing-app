@@ -148,12 +148,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/bRead"
-            android:onClick="ReadBtn"
-            android:text="See posted Event"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         </TableLayout>
     </ScrollView>
 </LinearLayout>

@@ -15,7 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import butterknife.ButterKnife;
@@ -24,7 +26,6 @@ import butterknife.Bind;
 public class ActivityRegister extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     // private static final int REQUEST_SIGNUP = 0;
-
     @Bind(R.id.etName)
     EditText _nameText;
 
@@ -40,12 +41,13 @@ public class ActivityRegister extends AppCompatActivity {
     @Bind(R.id.bregister)
     Button _registerButton;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-
         _registerButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -86,7 +88,7 @@ public class ActivityRegister extends AppCompatActivity {
                         // onRegisterFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 1000);
     }
 /*
     @Override
@@ -144,23 +146,27 @@ public class ActivityRegister extends AppCompatActivity {
 
         return valid;
     }
-
+/*
     public void registerClicked(View v){
         // add-write text into file
         if(validate()) {
             try {
-                FileOutputStream fileout = openFileOutput("accounts.txt", MODE_APPEND);
+                FileOutputStream fileout = openFileOutput("accounts.txt", MODE_PRIVATE);
                 OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
 
                 outputWriter.write("{");
                 outputWriter.write(_emailText.getText().toString());
                 outputWriter.write("\n");
                 outputWriter.write(_passwordText.getText().toString());
+                outputWriter.write("}");
+
                 outputWriter.close();
 
                 //display file saved message
-                Toast.makeText(getBaseContext(), "File saved successfully!",
-                        Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(this, TabLayout.class);
+                startActivity(i);
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -168,4 +174,29 @@ public class ActivityRegister extends AppCompatActivity {
         }
     }
 
+
+    public void ReadBtn(View v) {
+        //reading text from file
+        try {
+            FileInputStream fileIn=openFileInput("accounts.txt");
+            InputStreamReader InputRead= new InputStreamReader(fileIn);
+
+            char[] inputBuffer= new char[100];
+            String s="";
+            int charRead;
+
+            while ((charRead=InputRead.read(inputBuffer))>0) {
+                // char to string conversion
+                String readstring=String.copyValueOf(inputBuffer,0,charRead);
+                s +=readstring;
+
+            }
+            InputRead.close();
+            Toast.makeText(getBaseContext(), s,Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+*/
 }

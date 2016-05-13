@@ -70,12 +70,13 @@ public class CustomAdapter extends BaseAdapter{
         Uri uri;
         uri= Uri.parse(imageId[position]);
         holder.img.setImageURI(uri);
-        
+
         rowView.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+
 
                 Toast.makeText(context, desc[position], Toast.LENGTH_LONG).show();
             }

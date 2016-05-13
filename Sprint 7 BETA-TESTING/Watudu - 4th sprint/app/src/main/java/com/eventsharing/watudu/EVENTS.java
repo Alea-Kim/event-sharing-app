@@ -43,7 +43,7 @@ public class EVENTS extends Activity {
             InputStreamReader InputRead= new InputStreamReader(fileIn);
 
             char[] inputBuffer= new char[READ_BLOCK_SIZE];
-            String s="";
+            String s = "";
             int charRead;
             while ((charRead = InputRead.read(inputBuffer)) > 0) {
                 // char to string conversion
