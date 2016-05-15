@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--   Author:  Camille Bacister | Date: Feb 16, 2016     -->
+
+<!--
+    DEVELOPED BY: BACK UP
+    CLIENT: MAAM ANNETTE (ITDC)
+    ListView is used to prompt the searched events in a listed manner.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent"
+    android:background="#0066bb">
+
+    <ListView
+        android:id ="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+</RelativeLayout>
